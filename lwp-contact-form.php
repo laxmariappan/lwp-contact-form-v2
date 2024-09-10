@@ -66,3 +66,22 @@ add_action( 'wp_enqueue_scripts', 'wp_learn_enqueue_styles' );
 function wp_learn_enqueue_styles(){
     wp_enqueue_style('lwp-contact-form', plugin_dir_url(__FILE__) . '/assets/css/style.css', array(), '1.0.0', 'all');
 }
+
+/**
+ * Handles the form submission.
+ */
+add_action( 'wp', 'wp_learn_handle_submission');
+/**
+ * Handles the form submission.
+ *
+ */
+function wp_learn_handle_submission() {
+    // Check nonce.
+    if ( ! isset( $_POST['lwp_contact_form_submit'] ) ) {
+        return;
+    }
+
+    print_r($_POST);
+
+    wp_die();
+}

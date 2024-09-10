@@ -4,6 +4,8 @@
  * Description:       A simple contact form plugin for WordPress.
  * Version:           1.0.0
  * Author:            Lax Mariappan
+ * Requires at least: 5.8
+ * Requires PHP: 7.4
  * Text Domain:       lwp-contact-form
  *
  * @package           lwp-contact-form
@@ -61,6 +63,8 @@ add_action( 'wp_enqueue_scripts', 'wp_learn_enqueue_styles' );
 /**
  * Enqueues the styles.
  *
+ * @return void
+ *
  * @see https://developer.wordpress.org/reference/functions/wp_enqueue_style/
  */
 function wp_learn_enqueue_styles(){
@@ -74,6 +78,7 @@ add_action( 'wp', 'wp_learn_handle_submission');
 /**
  * Handles the form submission.
  *
+ * @return void
  */
 function wp_learn_handle_submission() {
     // Check if the form is submitted.

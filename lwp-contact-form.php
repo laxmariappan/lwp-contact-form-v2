@@ -119,7 +119,7 @@ function wp_learn_print_form_data( $content ) {
     $last_name  = sanitize_text_field( $_POST['last_name'] );
     $subject    = sanitize_text_field( $_POST['subject'] );
     $email      = sanitize_email( $_POST['email'] );
-    $message    = esc_textarea( $_POST['message'] );
+    $message    = sanitize_textarea_field( $_POST['message'] );
 
     //Print the data.
 

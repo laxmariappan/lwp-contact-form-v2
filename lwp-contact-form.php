@@ -48,6 +48,11 @@ function wp_learn_render_contact_form() {
         <label for="message">Message</label>
         <textarea id="message" name="message" required></textarea>
 
+        <?php // Add a nonce field here for security.
+        // @see: https://developer.wordpress.org/reference/functions/wp_nonce_field/
+        wp_nonce_field( 'lwp_contact_form_nonce' );
+        ?>
+
         <button type="submit" name="lwp_contact_form_submit">Submit</button>
         <small>* All fields are required.</small>
     </form>
@@ -84,6 +89,14 @@ function wp_learn_handle_submission() {
     // Check if the form is submitted.
     // We have to verify nonce to secure the form, skipped it for now.
     if ( ! isset( $_POST['lwp_contact_form_submit'] ) ) {
+        return;
+    }
+
+    // Run a security check.
+    // Return if the nonce is invalid.
+    // @see: https://developer.wordpress.org/reference/functions/wp_verify_nonce/
+
+    if( ! wp_verify_nonce( $_POST['_wpnonce'], 'lwp_contact_form_nonce' ) ) {
         return;
     }
 

@@ -29,7 +29,26 @@ add_shortcode( 'lwp_contact_form', 'wp_learn_render_contact_form' );
 function wp_learn_render_contact_form() {
     ob_start();
     ?>
-    <p>Placeholder for the contact form.</p>
+    <div class="lwp-contact-form">
+    <form method="post" action="">
+        <label for="first_name">First Name</label>
+        <input type="text" id="first_name" name="first_name" required>
+
+        <label for="last_name">Last Name</label>
+        <input type="text" id="last_name" name="last_name" required>
+
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit" name="lwp_contact_form_submit">Submit</button>
+        <small>* All fields are required.</small>
+    </form>
     <?php
     return ob_get_clean();
 }

@@ -81,7 +81,28 @@ function wp_learn_handle_submission() {
         return;
     }
 
-    print_r($_POST);
+    add_action('the_content', 'wp_learn_print_form_data');
+}
 
-    wp_die();
+function wp_learn_print_form_data( $content ) {
+    // Sanitize the data.
+    $first_name = sanitize_text_field( $_POST['first_name'] );
+    $last_name  = sanitize_text_field( $_POST['last_name'] );
+    $subject    = sanitize_text_field( $_POST['subject'] );
+    $email      = sanitize_email( $_POST['email'] );
+    $message    = esc_textarea( $_POST['message'] );
+
+    //Print the data.
+    echo '<div class="lwp-contact-form success-message">';
+    echo '<h2>Thank you for your message!</h2>';
+    echo '<p><strong>First Name:</strong> ' . $first_name . '</p>';
+    echo '<p><strong>Last Name:</strong> ' . $last_name . '</p>';
+    echo '<p><strong>Subject:</strong> ' . $subject . '</p>';
+    echo '<p><strong>Email:</strong> ' . $email . '</p>';
+    echo '<p><strong>Message:</strong> ' . $message . '</p>';
+    echo '</div>';
+
+    // Return the content.
+    return $content;
+
 }

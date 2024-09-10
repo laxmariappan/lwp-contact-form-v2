@@ -49,6 +49,20 @@ function wp_learn_render_contact_form() {
         <button type="submit" name="lwp_contact_form_submit">Submit</button>
         <small>* All fields are required.</small>
     </form>
+    </div>
     <?php
     return ob_get_clean();
+}
+
+/**
+ * Add styles to the form.
+ */
+add_action( 'wp_enqueue_scripts', 'wp_learn_enqueue_styles' );
+/**
+ * Enqueues the styles.
+ *
+ * @see https://developer.wordpress.org/reference/functions/wp_enqueue_style/
+ */
+function wp_learn_enqueue_styles(){
+    wp_enqueue_style('lwp-contact-form', plugin_dir_url(__FILE__) . '/assets/css/style.css', array(), '1.0.0', 'all');
 }

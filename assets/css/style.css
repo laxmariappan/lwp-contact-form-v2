@@ -1,0 +1,30 @@
+.lwp-contact-form {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.lwp-contact-form input, .lwp-contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.lwp-contact-form button {
+    padding: 10px 20px;
+    background-color: #0073aa;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.lwp-contact-form button:hover {
+    background-color: #005177;
+}
+.lwp-contact-form.success-message {
+    color: green;
+    background: #F2FBF2DB;
+    font-weight: bold;
+}

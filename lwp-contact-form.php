@@ -121,10 +121,30 @@ function wp_learn_print_form_data( $content ) {
     $email      = isset( $_POST['email'] ) ? sanitize_email( $_POST['email'] ) : '';
     $message    = isset( $_POST['message'] ) ? sanitize_textarea_field( $_POST['message'] ) : '';
 
+    // Save data to the database as lwp-form-entry post type.
+    $post_id = wp_insert_post( [
+        'post_title' => 'Form submission - ' . $subject,
+        'post_content' => $message,
+        'post_status' => 'publish',
+        'post_type' => 'lwp-form-entry',
+        'meta_input' => [
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'email' => $email,
+        ],
+    ] );
+
     //Print the data.
 
     $data = '<div class="lwp-contact-form success-message">';
     $data .= '<h2>Thank you for your message!</h2>';
+
+
+    // Let the user know if the form entry is saved.
+    if( $post_id ){
+        $data .= '<p>Form entry saved successfully.</p>';
+    }
+
     $data .= '<p><strong>First Name:</strong> ' . $first_name . '</p>';
     $data .= '<p><strong>Last Name:</strong> ' . $last_name . '</p>';
     $data .= '<p><strong>Subject:</strong> ' . $subject . '</p>';
@@ -135,4 +155,29 @@ function wp_learn_print_form_data( $content ) {
     // Return the content with data.
     return $data . $content;
 
+}
+
+/**
+ * Register the custom post type for form entries.
+ */
+add_action( 'init', 'wp_learn_register_post_type' );
+/**
+ * Registers the custom post type for form entries.
+ *
+ * @return void
+ */
+function wp_learn_register_post_type() {
+
+    // Register the custom post type.
+    // @see https://developer.wordpress.org/reference/functions/register_post_type/
+    register_post_type( 'lwp-form-entry', [
+        'labels' => [
+            'name' => 'Form Entries',
+            'singular_name' => 'Form Entry',
+        ],
+        'public' => false,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'supports' => [ 'title', 'editor', 'custom-fields' ],
+    ] );
 }

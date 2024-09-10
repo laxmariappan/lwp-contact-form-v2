@@ -9,3 +9,4 @@
 - `step-5` - Adds the submission handler, print the form data for testing.
 - `step-6` - Adds the success message.
 - `step-7` - Adds the nonce field.
+- `step-8` - Adds the sanitization of form data.

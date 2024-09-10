@@ -104,16 +104,17 @@ function wp_learn_print_form_data( $content ) {
     $message    = esc_textarea( $_POST['message'] );
 
     //Print the data.
-    echo '<div class="lwp-contact-form success-message">';
-    echo '<h2>Thank you for your message!</h2>';
-    echo '<p><strong>First Name:</strong> ' . $first_name . '</p>';
-    echo '<p><strong>Last Name:</strong> ' . $last_name . '</p>';
-    echo '<p><strong>Subject:</strong> ' . $subject . '</p>';
-    echo '<p><strong>Email:</strong> ' . $email . '</p>';
-    echo '<p><strong>Message:</strong> ' . $message . '</p>';
-    echo '</div>';
 
-    // Return the content.
-    return $content;
+    $data = '<div class="lwp-contact-form success-message">';
+    $data .= '<h2>Thank you for your message!</h2>';
+    $data .= '<p><strong>First Name:</strong> ' . $first_name . '</p>';
+    $data .= '<p><strong>Last Name:</strong> ' . $last_name . '</p>';
+    $data .= '<p><strong>Subject:</strong> ' . $subject . '</p>';
+    $data .= '<p><strong>Email:</strong> ' . $email . '</p>';
+    $data .= '<p><strong>Message:</strong> ' . $message . '</p>';
+    $data .= '</div>';
+
+    // Return the content with data.
+    return $data . $content;
 
 }

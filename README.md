@@ -15,6 +15,8 @@ If you are familiar with git, you can clone the repository and checkout the bran
 
 If you are new to git, you can download the zip file of the repository and install the plugin in your WordPress site.
 
+> Note: This is a demo plugin and should not be used in a production site without proper testing and validation.
+
 ### Learning Objectives
 
 - Create a simple contact form in WordPress.
@@ -25,6 +27,14 @@ If you are new to git, you can download the zip file of the repository and insta
 - Save form entry to the database. ( Branch `step-10` )
 - Display form entries in the admin. ( Branch `step-10` )
 
+### Resources
+
+[Let’s code: creating your first WordPress plugin](https://wordpress.tv/2022/07/22/lets-code-creating-your-first-wordpress-plugin/)
+
+[Plugin API Hooks](https://wordpress.tv/2024/05/24/plugin-api-hooks/)
+
+[WordPress Plugin Handbook](https://developer.wordpress.org/plugins/)
+
 ### WordPress Concepts Used
 
 - Shortcode API
@@ -33,6 +43,14 @@ If you are new to git, you can download the zip file of the repository and insta
 - Custom Post Type
 - Custom Meta fields
 - Admin Columns
+
+### Extend the plugin
+
+- Add more fields to the form.
+- Multistep form.
+- Add file upload field.
+- Use PHP Classes to organize the code.
+- Add email notification to the admin.
 
 ### Branches
 - `main` - Stable version

@@ -181,3 +181,48 @@ function wp_learn_register_post_type() {
         'supports' => [ 'title', 'editor', 'custom-fields' ],
     ] );
 }
+
+/**
+ * Show the first name, last name and email in the admin.
+ */
+add_filter( 'manage_lwp-form-entry_posts_columns', 'wp_learn_add_columns' );
+/**
+ * Adds custom columns to the form entry post type.
+ *
+ * @param array $columns Existing columns.
+ *
+ * @return array Modified columns.
+ */
+function wp_learn_add_columns( $columns ) {
+    $columns['first_name'] = 'First Name';
+    $columns['last_name'] = 'Last Name';
+    $columns['email'] = 'Email';
+    return $columns;
+}
+
+/**
+ * Display values in custom columns.
+ */
+add_action( 'manage_lwp-form-entry_posts_custom_column', 'wp_learn_display_columns', 10, 2 );
+/**
+ * Displays the values in custom columns.
+ *
+ * @param string $column  The column name.
+ * @param int    $post_id The post ID.
+ *
+ * @return void
+ */
+function wp_learn_display_columns( $column, $post_id )
+{
+    switch ($column) {
+        case 'first_name':
+            echo get_post_meta($post_id, 'first_name', true);
+            break;
+        case 'last_name':
+            echo get_post_meta($post_id, 'last_name', true);
+            break;
+        case 'email':
+            echo get_post_meta($post_id, 'email', true);
+            break;
+    }
+}

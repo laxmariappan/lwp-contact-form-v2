@@ -11,3 +11,4 @@
 - `step-7` - Adds the nonce field.
 - `step-8` - Adds the sanitization of form data.
 - `step-9` - Adds the custom post type for form entries and save form entry to the database.
+- `step-10` - Display form entries values in the admin.

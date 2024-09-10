@@ -76,14 +76,25 @@ add_action( 'wp', 'wp_learn_handle_submission');
  *
  */
 function wp_learn_handle_submission() {
-    // Check nonce.
+    // Check if the form is submitted.
+    // We have to verify nonce to secure the form, skipped it for now.
     if ( ! isset( $_POST['lwp_contact_form_submit'] ) ) {
         return;
     }
 
+    /**
+     * Add a callback function to print the form data.
+     */
     add_action('the_content', 'wp_learn_print_form_data');
 }
 
+/**
+ * Prints the form data.
+ *
+ * @param string $content The content.
+ *
+ * @return string
+ */
 function wp_learn_print_form_data( $content ) {
     // Sanitize the data.
     $first_name = sanitize_text_field( $_POST['first_name'] );
